@@ -1,0 +1,30 @@
+body {
+    background-image: url("../images/1440x450.jpg");
+    background-color: blueviolet;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+header {
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
+.jumbotron {
+    background-color: blueviolet;
+
+}
+
+
+
+#btn {
+    color: white;
+    background-color: blue;
+}
+
+#foot {
+    margin-top: 15rem;
+}
