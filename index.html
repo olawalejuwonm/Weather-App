@@ -15,25 +15,33 @@
 <body>
     <div class="container">
         <header class="row justify-content-center jumbotron">
-            <img src="./images/drizzle.png" class="rounded float-left" alt="icon">
+            <img src="./images/drizzle.png" class="rounded float-left " alt="icon">
             <small>SMASH<i>it</i></small>
             Weather App
         </header>
         <form onsubmit="FormOnsubmit(event)">
-            <div class="form-group row justify-content-center">
-                <input id="Search" class="col-6 form-control mb-2" type="text" class="form-control" name="Search"
-                    aria-describedby="search"/>
-                <!-- <label class="justify-content-center align-items-center align-self-center">Search</label> -->
+            <div class="form-group form-row justify-content-center">
+                <div class="col-6 mb-2">
+                    <input id="Search" class="form-control" type="text" class="form-control" name="Search"
+                        aria-describedby="search" />
+                    <div id="SearchFeedbackWrong" class="invalid-feedback justify-content-center">Error Occured</div>
+                    <div id="SearchFeedbackRight" class="valid-feedback justify-content-center">Searching...</div>
+
+                    <!-- <label class="justify-content-center align-items-center align-self-center">Search</label> -->
+                </div>
                 <div class="w-100"></div>
                 <button type="submit" id="btn" class="btn btn-primary">Search</button>
             </div>
         </form>
     </div>
     <div class="container">
+        
         <div class="row justify-content-end">
             <!-- <div class="col px-md-5"><div class="p-3 border bg-light"></div></div> -->
-            <div class=""><div class="p-3 border btn bg-warning mb-1">Activity</div></div>
-          </div>
+            <div>
+                <a class="p-3 border btn bg-warning mb-1"  href="/activity.html">History</a>
+            </div>
+        </div>
     </div>
     <!-- style="max-width: 18rem; max-height: 18rem" -->
     <div class="container">
@@ -71,7 +79,7 @@
             </div>
         </footer>
     </div>
-    <script src='scripts\main.js'></script>
+    <script src='script\main.js'></script>
 
 </body>
 
