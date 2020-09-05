@@ -70,7 +70,7 @@ const FormOnsubmit = (event) => {
                 // console.log(typeof(Storage))
                 const d = new Date();
                 if (typeof (Storage) !== "undefined") {
-                    if (localStorage.WeatherSearched) {
+                    if (JSON.parse(localStorage.WeatherSearched) !== false) {
                         let storedWeather = JSON.parse(localStorage.WeatherSearched);
                         console.log(storedWeather);
                         storedWeather.push({ main, name, sys, weather, Date: (d.toDateString())});
