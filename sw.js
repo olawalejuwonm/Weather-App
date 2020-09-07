@@ -1,4 +1,4 @@
-let CACHE_NAME = 'my-site-cache-v1';
+let CACHE_NAME = 'my-weather-cache-v1';
 let urlsToCache = [
     '/',
     '/styles/main.css',
