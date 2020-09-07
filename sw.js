@@ -16,8 +16,6 @@ var urlsToCache = [
 ];
 
 
-
-
 self.addEventListener('install', function (event) {
     //The install event is the first event a service worker gets, and it only happens once
     // Perform install steps
@@ -38,7 +36,14 @@ self.addEventListener('fetch', event => {
     // serve the cat SVG from the cache if the request is
     // same-origin and the path is '/dog.svg'
     if (url.origin == location.origin) {
-      event.respondWith(caches.match(url.pathname));
+      event.respondWith(caches.match(url.pathname)
+      .then((response) => {
+          console.log("mic respo", response)
+          if (response) {
+              return response
+          }
+
+      }));
     }
   })
 // self.addEventListener('fetch', function (event) {

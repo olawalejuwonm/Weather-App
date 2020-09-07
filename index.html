@@ -19,6 +19,17 @@
             <small>SMASH<i>it</i></small>
             Weather App
         </header>
+        <div id="updateAlert" class="alert alert-success alert-dismissible fade show" role="alert"
+            onclick="closeAlert()">
+            <strong>Info:</strong> You only need internet connection for weather update, this is an offline web
+            application.You can navigate to History without connection, Try It Out!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row">
+
+        </div>
         <form onsubmit="FormOnsubmit(event)">
             <div class="form-group form-row justify-content-center">
                 <div class="col-7  mb-2">
@@ -35,11 +46,11 @@
         </form>
     </div>
     <div class="container">
-        
+
         <div class="row justify-content-end">
             <!-- <div class="col px-md-5"><div class="p-3 border bg-light"></div></div> -->
             <div>
-                <a class="p-3 border btn bg-warning mb-1"  href="./activity.html">History</a>
+                <a class="p-3 border btn bg-warning mb-1" href="./activity.html">History</a>
             </div>
         </div>
     </div>

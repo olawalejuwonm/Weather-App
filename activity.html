@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,32 +19,47 @@
             <small>SMASH<i>it</i></small>
             Weather App
         </header>
-    <div class="container" id="no">
-        <div class="row">
-            <!-- <div class="col px-md-5"><div class="p-3 border bg-light"></div></div> -->
-            <div class=" justify-content-start col-2">
-                <button class="p-3 border btn bg-warning mb-1" onclick="clearHistory()">Clear</button>
-            </div>
-            <div class="offset-6 offset-md-8 justify-content-end col-2">
-                <div>
-                    <a class="p-3 border btn bg-warning mb-1" href="./index.html">Home</a>
+        <div id="updateAlert" class="alert alert-success alert-dismissible fade show" role="alert"
+            onclick="closeAlert()">
+            <strong>Info:</strong> You only need internet connection for weather update, this is an offline web
+            application.You can navigate to Home without connection, Try It Out!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="updateAlertClear" class="alert alert-warning alert-dismissible fade show" role="alert"
+            onclick="closeAlertClear()">
+            <strong>Note:</strong> Clicking the clear button will delete all history of weather searched.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="container" id="no">
+            <div class="row">
+                <!-- <div class="col px-md-5"><div class="p-3 border bg-light"></div></div> -->
+                <div class=" justify-content-start col-2">
+                    <button class="p-3 border btn bg-warning mb-1" onclick="clearHistory()">Clear</button>
+                </div>
+                <div class="offset-6 offset-md-8 justify-content-end col-2">
+                    <div>
+                        <a class="p-3 border btn bg-warning mb-1" href="./index.html">Home</a>
+                    </div>
                 </div>
             </div>
+
         </div>
-        
-    </div>
-    <div class="container">
-        <div class="row" id="weatherContainer">
-        </div>
-    </div>
-    <div class="jumbotron" id="foot">
-        <footer class="row justify-content-center">
-            <div class="col-auto justify-content-center align-item-center">
-                <p class="text-center text-white">Developed By Olawale Micheal Juwon</p>
+        <div class="container">
+            <div class="row" id="weatherContainer">
             </div>
-        </footer>
-    </div>
-    <script  src='script\Activity.js'></script>
+        </div>
+        <div class="jumbotron" id="foot">
+            <footer class="row justify-content-center">
+                <div class="col-auto justify-content-center align-item-center">
+                    <p class="text-center text-white">Developed By Olawale Micheal Juwon</p>
+                </div>
+            </footer>
+        </div>
+        <script src='script\Activity.js'></script>
 </body>
 
 </html>

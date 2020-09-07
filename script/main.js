@@ -1,5 +1,10 @@
 const pro = '3e20f6c766447ac616bee54e5076345a';
 // let SearchedWeather = 
+
+const closeAlert = () => {
+    document.getElementById("updateAlert").style = "display:none";
+}
+
 const generateWeather = (main, name, sys, weather) => {
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`
 
@@ -89,13 +94,17 @@ const FormOnsubmit = (event) => {
                     }
                 }
                 else {
-
-                    alert("Your Search Might Not Be Saved")
+                    document.getElementById("updateAlert").classList.add("alert-danger");
+                    document.getElementById("updateAlert").style = "display:block";
+                    document.getElementById("updateAlert").innerText = `Your Search Might Not Be Saved, Local Storage Not Found`;
                 }
+
             }
             catch (error) {
                 console.log(error);
-                alert(error)
+                document.getElementById("updateAlert").classList.add("alert-danger");
+                document.getElementById("updateAlert").style = "display:block";
+                document.getElementById("updateAlert").innerText = `${error}`;
             }
 
         }).catch((error) => {
@@ -111,6 +120,7 @@ const FormOnsubmit = (event) => {
 }
 // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&
 // exclude={part}&appid={YOUR API KEY}
+
 
 
 if ('serviceWorker' in navigator) {

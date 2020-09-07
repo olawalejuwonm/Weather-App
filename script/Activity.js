@@ -1,5 +1,11 @@
 // import { generateWeather } from './main.js';
+const closeAlert = () => {
+    document.getElementById("updateAlert").style = "display:none";
+}
 
+const closeAlertClear = () => {
+    document.getElementById("updateAlertClear").style = "display:none";
+}
 
 
 const generateWeather = (main, name, sys, weather, date) => {
@@ -106,7 +112,7 @@ try {
                     return nwDiv
                 }
                 NoWeatherDom.insertBefore(NoWeatherMarkUp(), NoWeatherDom.childNodes[0])
-    
+
                 // localStorage.WeatherSearched = JSON.stringify([{ main, name, sys, weather, Date: (new Date()).toDateString() }])
             }
         }
@@ -134,13 +140,16 @@ try {
         }
     }
     else {
-
-        alert("Your Search Might Not Be Saved")
+        document.getElementById("updateAlert").classList.add("alert-danger");
+        document.getElementById("updateAlert").style = "display:block";
+        document.getElementById("updateAlert").innerText = `Your Search Are Not Be Saved, Local Storage Not Found`;
     }
 }
 catch (error) {
     console.log(error);
-    alert(error)
+    document.getElementById("updateAlert").classList.add("alert-danger");
+    document.getElementById("updateAlert").style = "display:block";
+    document.getElementById("updateAlert").innerText = `${error}`;
 }
 
 const clearHistory = () => {
@@ -148,8 +157,11 @@ const clearHistory = () => {
         window.localStorage.WeatherSearched = false;
         window.location.assign("../activity.html");
     }
-    catch (err) {
-        alert(err)
+    catch (error) {
+        console.log(error);
+        document.getElementById("updateAlert").classList.add("alert-danger");
+        document.getElementById("updateAlert").style = "display:block";
+        document.getElementById("updateAlert").innerText = `${error}`;
     }
 };
 
