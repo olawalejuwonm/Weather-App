@@ -155,7 +155,7 @@ catch (error) {
 const clearHistory = () => {
     try {
         window.localStorage.WeatherSearched = false;
-        window.location.assign("../activity.html");
+        window.location.reload();
     }
     catch (error) {
         console.log(error);

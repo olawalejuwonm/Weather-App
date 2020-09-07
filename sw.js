@@ -23,12 +23,11 @@ self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(function (cache) {
-                console.log('Opened cache');
+                // console.log('Opened cache');
                 return cache.addAll(urlsToCache);
             })
     );
 });
-
 
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
@@ -38,7 +37,7 @@ self.addEventListener('fetch', event => {
     if (url.origin == location.origin) {
       event.respondWith(caches.match(url.pathname)
       .then((response) => {
-          console.log("mic respo", response)
+        //   console.log("mic respo", response)
           if (response) {
               return response
           }
