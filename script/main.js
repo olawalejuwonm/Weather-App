@@ -133,10 +133,16 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').then(function (registration) {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function (err) {
+            document.getElementById("updateAlert").classList.add("alert-success");
+            document.getElementById("updateAlert").style = "display:block";
+            document.getElementById("updateAlert").innerHTML = `<strong>Info:</strong> You only need internet connection for weather update, this is an offline web
+            application.You can navigate to History without connection, Try It Out!`;
+        }, function (error) {
+            document.getElementById("updateAlert").classList.add("alert-danger");
+            document.getElementById("updateAlert").style = "display:block";
+            document.getElementById("updateAlert").innerText = `Your browser dosen't support offline browsing at the time, Kindly use CHROME!`;
             // registration failed :(
-            alert(err);
-            console.log('ServiceWorker registration failed: ', err);
+            console.log('ServiceWorker registration failed: ', error);
         });
     });
 }
