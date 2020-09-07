@@ -136,11 +136,15 @@ if ('serviceWorker' in navigator) {
             document.getElementById("updateAlert").classList.add("alert-success");
             document.getElementById("updateAlert").style = "display:block";
             document.getElementById("updateAlert").innerHTML = `<strong>Info:</strong> You only need internet connection for weather update, this is an offline web
-            application.You can navigate to History without connection, Try It Out!`;
+            application.You can navigate to History without connection, Try It Out!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>`;
         }, function (error) {
             document.getElementById("updateAlert").classList.add("alert-danger");
             document.getElementById("updateAlert").style = "display:block";
-            document.getElementById("updateAlert").innerText = `Your browser dosen't support offline browsing at the time, Kindly use CHROME!`;
+            document.getElementById("updateAlert").innerText = `Your browser dosen't support offline browsing at the time, Kindly use CHROME!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>`;
             // registration failed :(
             console.log('ServiceWorker registration failed: ', error);
         });
