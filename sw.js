@@ -1,16 +1,16 @@
 let CACHE_NAME = 'my-weather-cache-v1';
 let urlsToCache = [
-    '/',
-    '/styles/main.css',
-    'styles/styles.css',
-    '/script/main.js',
-    'styles/styles.min.css.map',
-    '/script/Activity.js',
-    '/favicon.ico',
-    '/index.html',
-    '/activity.html',
-    'images/drizzle.png',
-    'images/1440x450.jpg'
+    './',
+    './styles/main.css',
+    './styles/styles.css',
+    './script/main.js',
+    './styles/styles.min.css.map',
+    './script/Activity.js',
+    './favicon.ico',
+    './index.html',
+    './activity.html',
+    './images/drizzle.png',
+    './images/1440x450.jpg'
 
 ];
 
