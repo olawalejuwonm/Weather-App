@@ -1,4 +1,4 @@
-const pro = '3e20f6c766447ac616bee54e5076345a'
+const pro = '3e20f6c766447ac616bee54e5076345a';
 // let SearchedWeather = 
 const generateWeather = (main, name, sys, weather) => {
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`
@@ -68,23 +68,29 @@ const FormOnsubmit = (event) => {
             SearchDom.classList.remove("is-valid");
             try {
                 // console.log(typeof(Storage))
-                const d = new Date();
+                const date = new Date();
+                const dateT = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
                 if (typeof (Storage) !== "undefined") {
-                    if (JSON.parse(localStorage.WeatherSearched) !== false) {
-                        let storedWeather = JSON.parse(localStorage.WeatherSearched);
-                        console.log(storedWeather);
-                        storedWeather.push({ main, name, sys, weather, Date: (d.toDateString())});
-                        localStorage.WeatherSearched = JSON.stringify(storedWeather);
-                        console.log(JSON.parse(localStorage.WeatherSearched).length);
+                    if (localStorage.WeatherSearched) {
+                        if (JSON.parse(localStorage.WeatherSearched) !== false) {
+                            let storedWeather = JSON.parse(localStorage.WeatherSearched);
+                            console.log(storedWeather);
+                            storedWeather.push({ main, name, sys, weather, Date: dateT });
+                            localStorage.WeatherSearched = JSON.stringify(storedWeather);
+                            console.log(JSON.parse(localStorage.WeatherSearched).length);
 
+                        }
+                        else {
+                            localStorage.WeatherSearched = JSON.stringify([{ main, name, sys, weather, Date: dateT }])
+                        }
                     }
                     else {
-                        localStorage.WeatherSearched = JSON.stringify([{ main, name, sys, weather, Date: (new Date()).toDateString() }])
+                        localStorage.WeatherSearched = JSON.stringify([{ main, name, sys, weather, Date: dateT }])
                     }
                 }
                 else {
-                    
-                     alert("Your Search Might Not Be Saved")
+
+                    alert("Your Search Might Not Be Saved")
                 }
             }
             catch (error) {
@@ -107,16 +113,16 @@ const FormOnsubmit = (event) => {
 // exclude={part}&appid={YOUR API KEY}
 
 
-// if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', function() {
-//       navigator.serviceWorker.register('/sw.js').then(function(registration) {
-//         // Registration was successful
-//         console.log('ServiceWorker registration successful with scope: ', registration.scope);
-//       }, function(err) {
-//         // registration failed :(
-//         console.log('ServiceWorker registration failed: ', err);
-//       });
-//     });
-//   }
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
 
 
