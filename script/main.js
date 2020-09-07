@@ -79,10 +79,10 @@ const FormOnsubmit = (event) => {
                     if (localStorage.WeatherSearched) {
                         if (JSON.parse(localStorage.WeatherSearched) !== false) {
                             let storedWeather = JSON.parse(localStorage.WeatherSearched);
-                            console.log(storedWeather);
+                            // console.log(storedWeather);
                             storedWeather.push({ main, name, sys, weather, Date: dateT });
                             localStorage.WeatherSearched = JSON.stringify(storedWeather);
-                            console.log(JSON.parse(localStorage.WeatherSearched).length);
+                            // console.log(JSON.parse(localStorage.WeatherSearched).length);
 
                         }
                         else {
@@ -113,7 +113,8 @@ const FormOnsubmit = (event) => {
             SearchFeedback.innerText = error.message.toUpperCase();
             console.log(error);
             // TypeError: Failed to fetch
-            if (error === "TypeError: Failed to fetch") {
+            // console.log(typeof error)
+            if (error.toString() === "TypeError: Failed to fetch") {
                 document.getElementById("updateAlert").classList.add("alert-danger");
                 document.getElementById("updateAlert").style = "display:block";
                 document.getElementById("updateAlert").innerText = `Your Need Internet Connection To Search For Weather Update!`;
