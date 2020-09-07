@@ -113,7 +113,7 @@ const FormOnsubmit = (event) => {
             SearchFeedback.innerText = error.message.toUpperCase();
             console.log(error);
             // TypeError: Failed to fetch
-            if (error = "TypeError: Failed to fetch") {
+            if (error === "TypeError: Failed to fetch") {
                 document.getElementById("updateAlert").classList.add("alert-danger");
                 document.getElementById("updateAlert").style = "display:block";
                 document.getElementById("updateAlert").innerText = `Your Need Internet Connection To Search For Weather Update!`;
