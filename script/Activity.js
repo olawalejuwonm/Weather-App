@@ -146,10 +146,10 @@ try {
     }
 }
 catch (error) {
-    console.log(error);
+    // console.log(error);
     document.getElementById("updateAlert").classList.add("alert-danger");
     document.getElementById("updateAlert").style = "display:block";
-    document.getElementById("updateAlert").innerText = `${error}`;
+    document.getElementById("updateAlert").innerText = `${error.message}`;
 }
 
 const clearHistory = () => {
@@ -158,10 +158,10 @@ const clearHistory = () => {
         window.location.reload();
     }
     catch (error) {
-        console.log(error);
+        // console.log(error);
         document.getElementById("updateAlert").classList.add("alert-danger");
         document.getElementById("updateAlert").style = "display:block";
-        document.getElementById("updateAlert").innerText = `${error}`;
+        document.getElementById("updateAlert").innerText = `${error.message}`;
     }
 };
 

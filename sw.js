@@ -1,4 +1,5 @@
-let CACHE_NAME = 'my-weather-cache-v1';
+let CACHE_NAME = 'my-weather-cache-v2';
+// REMEMBER: Update cache names any time any of the cached files change.
 let urlsToCache = [
     './',
     './styles/main.css',
@@ -6,11 +7,21 @@ let urlsToCache = [
     './script/main.js',
     './styles/styles.min.css.map',
     './script/Activity.js',
+    './script/Install.js',
     './favicon.ico',
     './index.html',
     './activity.html',
     './images/drizzle.png',
-    './images/1440x450.jpg'
+    './images/1440x450.jpg',
+    './manifest.json',
+    'images/icons/icon-32x32.png',
+    'images/icons/icon-128x128.png',
+    'images/icons/icon-144x144.png',
+    'images/icons/icon-152x152.png',
+    'images/icons/icon-192x192.png',
+    'images/icons/icon-256x256.png',
+    'images/icons/icon-512x512.png',
+    'images/install.svg'
 
 ];
 
@@ -28,22 +39,49 @@ self.addEventListener('install', function (event) {
     );
 });
 
+self.addEventListener('activate', (evt) => {
+    // console.log('[ServiceWorker] Activate');
+    //Remove previous cached data from disk.
+    evt.waitUntil(
+        caches.keys().then((keyList) => {
+            return Promise.all(keyList.map((key) => {
+                //   console.log(key);
+                if (key !== CACHE_NAME) {
+                    // console.log('[ServiceWorker] Removing old cache', key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
+    // self.clients.claim();
+});
+
+
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
-  
-    // serve the cat SVG from the cache if the request is
-    // same-origin and the path is '/dog.svg'
-    if (url.origin == location.origin) {
-      event.respondWith(caches.match(url.pathname)
-      .then((response) => {
-        //   console.log("mic respo", response)
-          if (response) {
-              return response
-          }
+    // console.log(event.request)
 
-      }));
+    if (url.origin == location.origin) {
+        event.respondWith(caches.match(url.pathname)
+            .then((response) => {
+                //   console.log("mic respo", response)
+                if (response) {
+                    return response
+                }
+
+                return fetch(event.request)
+                    .catch((err) => {
+                        // console.log("error fetching", err);
+                        return null;
+                    })
+
+            }));
     }
-  })
+    //you can just have another event.respondwith if the origin is not same with location
+    // event.respondWith(
+    //     //do stuffs
+    // )
+})
 // self.addEventListener('fetch', function (event) {
 //     console.log("in fetch")
 //     //console.log("fetch", event)
@@ -99,7 +137,7 @@ self.addEventListener('fetch', event => {
 //or before waiting. It's pretty common to call it in the install event:
 // self.addEventListener('install', event => {
 //     self.skipWaiting();
-  
+
 //     event.waitUntil(
 //       // caching etc
 //     );
@@ -115,7 +153,7 @@ self.addEventListener('fetch', event => {
     // One common task that will occur in the activate callback is cache management
 
 //     let cacheAllowlist = ['pages-cache-v1', 'blog-posts-cache-v1'];
-  
+
 //     event.waitUntil(
 //       caches.keys().then(function(cacheNames) {
 //         return Promise.all(
@@ -163,11 +201,11 @@ self.addEventListener('fetch', event => {
 //     reg.installing; // the installing worker, or undefined
 //     reg.waiting; // the waiting worker, or undefined
 //     reg.active; // the active worker, or undefined
-  
+
 //     reg.addEventListener('updatefound', () => {
 //       // A wild service worker has appeared in reg.installing!
 //       const newWorker = reg.installing;
-  
+
 //       newWorker.state;
 //       // "installing" - the install event has fired, but not yet complete
 //       // "installed"  - install complete
@@ -175,13 +213,13 @@ self.addEventListener('fetch', event => {
 //       // "activated"  - fully active
 //       // "redundant"  - discarded. Either failed install, or it's been
 //       //                replaced by a newer version
-  
+
 //       newWorker.addEventListener('statechange', () => {
 //         // newWorker.state has changed
 //       });
 //     });
 //   });
-  
+
 //   navigator.serviceWorker.addEventListener('controllerchange', () => {
 //     // This fires when the service worker controlling this page
 //     // changes, eg a new worker has skipped waiting and become

@@ -101,19 +101,19 @@ const FormOnsubmit = (event) => {
 
             }
             catch (error) {
-                console.log(error);
+                // console.log(error);
                 document.getElementById("updateAlert").classList.add("alert-danger");
                 document.getElementById("updateAlert").style = "display:block";
-                document.getElementById("updateAlert").innerText = `${error}`;
+                document.getElementById("updateAlert").innerText = `${error.message}`;
             }
 
         }).catch((error) => {
             SearchDom.classList.remove("is-valid");
             SearchDom.classList.add("is-invalid");
             SearchFeedback.innerText = error.message.toUpperCase();
-            console.log(error);
+            // console.log(error);
             // TypeError: Failed to fetch
-            // console.log(typeof error)
+            // console.log(typeof error);
             if (error.toString() === "TypeError: Failed to fetch") {
                 document.getElementById("updateAlert").classList.add("alert-danger");
                 document.getElementById("updateAlert").style = "display:block";
@@ -133,11 +133,11 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker.register('./sw.js').then(function (registration) {
             // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            // console.log('ServiceWorker registration successful with scope: ', registration.scope);
             document.getElementById("updateAlert").classList.add("alert-success");
             document.getElementById("updateAlert").style = "display:block";
             document.getElementById("updateAlert").innerHTML = `<strong>Info:</strong> You only need internet connection for weather update, this is an offline web
-            application.You can navigate to History without connection, Try It Out!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            application.You can navigate to History without connection, Try It Out!<br>Click the install button to make this website a standalone application.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>`;
         }, function (error) {
@@ -147,7 +147,7 @@ if ('serviceWorker' in navigator) {
             <span aria-hidden="true">&times;</span>
         </button>`;
             // registration failed :(
-            console.log('ServiceWorker registration failed: ', error);
+            // console.log('ServiceWorker registration failed: ', error);
         });
     });
 }

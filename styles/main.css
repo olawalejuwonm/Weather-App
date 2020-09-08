@@ -37,6 +37,20 @@ header {
     width: 100%
 }
 
+/* #butRefresh {
+    background: url(../images/refresh.svg) center center no-repeat;
+} */
+
+#butInstall {
+    background: url(../images/install.svg) center center no-repeat;
+}
+
+@media all and (display-mode: standalone) {
+    body {
+      background-color: yellow;
+    }
+  }
+
 /* img { */
     /* border: 1px solid #ddd; */
     /* border-radius: 4px;

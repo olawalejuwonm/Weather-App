@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,20 +8,38 @@
     <link rel='stylesheet' type='text/css' href='styles\styles.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='styles\main.css'>
     <link rel="icon" href="favicon.ico">
-
+    <link rel="manifest" href="./manifest.json">
+    <meta name="description" content="A weather app by Olawale Micheal Juwon">
+    <meta name="theme-color" content="#2F3BA2" />
+    <!-- for safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather App">
+    <link rel="apple-touch-icon" href="./images/icons/icon-152x152.png">
 </head>
 
 <body>
     <div class="container">
-        <header class="row justify-content-center jumbotron">
-            <img src="./images/drizzle.png" class="rounded float-left " alt="icon">
-            <small>SMASH<i>it</i></small>
-            Weather App
+        <header class=" jumbotron">
+                <div class="row justify-content-center">
+                    <img src="./images/drizzle.png" class="rounded float-left " alt="icon">
+                    <small>SMASH<i>it</i></small>
+                    Weather App
+                    <!-- <button id="butInstall" class="btn" aria-label="Install" hidden></button> -->
+
+                </div>
+                <div class="row justify-content-end h-auto w-auto">
+                    <button id="butInstall" class="btn" aria-label="Install" hidden></button>
+                    <small id="btnText" class="text-small" hidden>Install</small>
+                    <!-- <button id="butRefresh" class="btn" aria-label="Refresh"></button> -->
+
+                </div>
         </header>
+        
         <div id="updateAlert" class="alert alert-success alert-dismissible fade show" role="alert"
             onclick="closeAlert()">
-            <strong>Loading PWA...:</strong> 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <strong>Loading PWA...:</strong>
+            <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -86,12 +103,13 @@
         <footer class="row justify-content-center">
             <div class="col-auto justify-content-center align-item-center">
                 <p class="text-center text-white">Developed By Olawale Micheal Juwon</p>
-                <a class="text-center text-warning offset-4" href="mailto:olawalejuwon@gmail.com?Subject=Weather%20App" target="_top">Contact Me</a>
+                <a class="text-center text-warning offset-4" href="mailto:olawalejuwon@gmail.com?Subject=Weather%20App"
+                    target="_top">Contact Me</a>
             </div>
         </footer>
     </div>
-    <script src='script\main.js'></script>
-
+    <script src='script/main.js'></script>
+    <script src="script/Install.js"></script>
 </body>
 
 </html>
